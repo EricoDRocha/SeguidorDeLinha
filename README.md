@@ -14,7 +14,7 @@ PRINCIPIO DE CONTROLE
 
 Alunos: 
 Andrei Moliterno 1420354/X
-Erico Rocha 		1324406/5
+Erico Rocha 	 1324406/5
 
 
 

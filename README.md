@@ -65,6 +65,8 @@ Arduino é uma plataforma de computação open-source baseado em uma simples pla
 Este é o Arduino Uno R3. É uma placa com microcontrolador Atmega328 (datasheet). Possui 14 entradas/saídas digitais (das quais 6 podem ser usadas como saídas PWM), 6 entradas analógicas, um cristal oscilador de 16MHz, conexão USB, uma entrada para fonte, soquetes para ICSP, e um botão de reset. A placa contém todo o necessário para usar o microcontrolador. Simplesmente conecte-a a um computador com o cabo USB - AB (não acompanha - deve ser comprado separadamente) ou ligue a placa com uma fonte AC-DC(ou bateria). O Uno seleciona automáticamente a fonte de alimentação (USB ou fonte externa). Esta placa já vem pronta e testada com o microcontrolador ATMega328 pré-carregado com "bootloader"
 A placa Uno se diferencia das outras por não utilizar o chip da FTDI USB-to-Serial. Ao invés deste chip, um Atmega8U2 já programado faz a função de converter os dados da USB para Serial.
 
+https://github.com/EricoDRocha/SeguidorDeLinha/blob/master/arduino.png?raw=true
+
 - Especificações:
 - Microcontrolador: ATMEGA328P-PU
 - Tensão de Operação: 5V
@@ -107,69 +109,11 @@ OBS: Durante a montagem do carro, observando que as rodas não estavam com veloc
 
 Codigo de impementação
 
-#include <Servo.h>
- 
- 
-//Define os pinos para o trigger e echo
- 
-#define pino_trigger1 1
-#define pino_trigger2 
-#define pino_trigger3 3
- 
- 
- 
-//Inicializa as variaveis
- 
- 
-int led = 13;
-int para_roda = 90;
-int dir = 0;
-float meio = 1;
-float esq = 0;
-int Vel = 20;
- 
-Servo mot_esquerdo,mot_direito;
- 
- 
- //Configura os pinos
-void setup()
-{
-  mot_esquerdo.attach(8);
-  mot_direito.attach(9);
-  //mot_esquerdo.writeMicroseconds (1500);
-  //mot_direito.writeMicroseconds (1500);
-  
-}
- 
-void loop()
-{
-  int dir = digitalRead(3);
-  int meio = digitalRead(2);
-  int esq = digitalRead(1);
-  int para_Roda = 0;
-  int Vel = 30;
-  int Ajust1= 10;
-  int Ajust2 = -25;
- 
-  //CondiÃ§oes e regras
- if( dir == 1){
-  mot_direito.write(90);
-  delay(10);
-  mot_esquerdo.write(90+ Vel+ Ajust1);
-   
-  }
-  
-  else if(esq == 1){
-  mot_esquerdo.write(90);
-  delay(10);
-  mot_direito.write(90 - Vel - Ajust2);
-  }
-  
- 
-  mot_esquerdo.write(90 + Vel+ Ajust1);
-  mot_direito.write(90 - Vel- Ajust2);
- 
-}
+---------------------------------------
+---------------------------------------
+---------------------------------------
+
+Codigo de impementação
 
 
 		Conclusão

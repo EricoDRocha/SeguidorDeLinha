@@ -107,6 +107,50 @@ Os Servo motores irão fazer girar as rodas(a roda direita e esquerda) dentro do
 OBS: Durante a montagem do carro, observando que as rodas não estavam com velocidade constante ou seja, uma delas estava girando mais rápido do que a outra, mesmo mandando o valor igual em módulo. A lógica abordada é bem simples, quando o sensor da direita mandar mandar o sinal identificando uma linha, irá parar a roda da direita e aumentar a velocidade da roda da esquerda, e visse versa, porém utilizamos uma variável de ajuste para tentar igualar a velocidade da roda, por isso na implementação não colocamos os mesmo nas rodas.
 
 
+---------------------------------------
+Logia de Funcionamento
+
+Como o nosso sensor ele não consegue calcular um valor analogicamente (é apenas digital, zero ou 1) precisamos de uma fórmula para virtualizar.
+if (dir+meio+esq>0)
+ leitura = (150*dir + 100*meio +50*esq)/(dir+meio+esq);
+  “dir” “meio” “esq” são as variáveis que recebem o que é lido  do sensor digital
+Dessa forma conseguimos saber o quão perto da esquerda ou da direita ele se encontra.
+
+Utiliziamos o erro para poder otimizar a acertividade do nosso carro.
+erro_ant = erro;  -- Como o erro_ant é atualizado antes do erro, garantimos que o erro anterior é salvo antes de pegarmos o novo erro.
+erro  = setpoint - leitura;                  
+ DErro  = erro - erro_ant; -- variação do erro atual com o erro anterior.
+Setpoint = constante que foi escolhida para caso não seja encontrado nada.
+Para calcularmos o “P” precisamos do erro corrente multiplicada a uma constante KP
+
+Primeiro passo do codigo   tempo_ant = tempo;
+Depois da leitura é feito o cálculo do tempo novamente.  tempo = millis();
+Depois é calculado o variação do 	Dtempo = tempo - tempo_ant;
+
+Assim iremos utilizar o Dtempo no cálculo do Kd
+
+Após ter a informação do erro e da variação do tempo, assim podemos calcular o KD;
+kd = erro/Dtempo; -- Kd representa a variação do erro ao longo do tempo
+
+Função  para Calcular o valor de “i” com a constante  “Ki” afim de calibrar o resultado
+double calc_i(int erro, double tempo, double i){
+ i += i + (DErro* tempo)*ki;   return i;   }
+
+Chamado dentro do codigo após ter o valor do DT e do erro.
+i = calc_i(erro, Dtempo,i)
+
+Obs: Criamos um metodo para calcular o I afim de deixar o código mais legível, passando o valor I(pois ele é um acumulativo), o erro encontrado e a variação do tempo.
+
+Utilizamos técnica tentativa e erro, os valores de melhor resultado foram;
+
+Kp = 0.5
+Kd = 0.1
+Ki = 0.1 
+
+Quanto mais aumentamos o valor principalmente do Kd e Ki o tempo de resposta do carro ou era rápido  demais para efetuar a ação ou ele se perdia e não adiantava o valor lido pelo sensor.
+
+
+
 Codigo de impementação
 
 ---------------------------------------
@@ -119,6 +163,10 @@ Codigo de impementação
 		Conclusão
 
 Foi encontrado algumas dificuldades no trabalho, o fato do sensor não está muito perto da linha, causando um sinal não muito preciso. Um aumento na quantidade de sensores poderia dar mais precisão, como as rodas são soldadas manualmente, causou o problema de uma roda não girar com mesma velocidade que a outra.
+
+Tivemos um problema na montagem que o VCC estava causando interferência no sensor digital, que as vezes nos fazia achar que a logica estava errada, pois não estavamos entendendo o comportamento do carro.
+
+Como utilizamos o servor motor e eles so vão de 0 ( valor contrario) 90 (parado) até 180 e como utilizamos variaveis para controlar a o valor final que estaria entre 0 e 180, se esses valores ou ficassem menor que zero ou maior que 180 ele pagava um valor completamente aleatório.
 
 
 bibliografia :

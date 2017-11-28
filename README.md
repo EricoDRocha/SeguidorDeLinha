@@ -34,6 +34,8 @@ Módulo Seguidor de Linha Infravermelho 4 Canais:
 O Módulo Seguidor de Linha Infravermelho 4 Canais é baseado em quatro sensores seguidores de linha, o seu diferencial está no fato dele otimizar o projeto, uma vez que o caminho pode ser ao mesmo tempo monitorado em quatro trechos distintos, facilitando dessa forma a estratégia adotada. Cada sensor é independente e possui um trimpot de ajuste de luminosidade de detecção.
 O Módulo Seguidor de Linha Infravermelho 4 Canais é compatível com Arduino, Pic, Arm, Raspberry Pi entre outros.
 
+https://github.com/EricoDRocha/SeguidorDeLinha/blob/master/segidor%20de%20linha.png?raw=true
+
 - Especificações:
 - Tensão de alimentação: 3.3V - 5V;
 - Consumo de Corrente: 1A;
@@ -47,6 +49,8 @@ O Módulo Seguidor de Linha Infravermelho 4 Canais é compatível com Arduino, P
 
 Kit Chassi 2WD
 O Kit Chassi 2WD foi desenvolvido com a finalidade de prover ao maker interessado em robótica educacional, uma ferramenta de montagem de um carrinho para aplicações em robótica. O Kit Chassi 2WD é composto pela estrutura fabricada em acrílico, motores com caixa de redução(1:48), rodas com pneu, roda boba, suporte para pilhas e peças de montagem do chassi. O Kit Chassi 2WDpode ser utilizado na construção de um robô seguidor de linha, robô de combate, robô que desvia de obstáculos. Para o controle do Kit Chassi 2WD, podem ser utilizadas diversas placas microcontroladas, Arduino, Raspberry Pi, Beaglebone Black, Orange Pi entre outras.
+
+https://github.com/EricoDRocha/SeguidorDeLinha/blob/master/chassi.png?raw=true
 
 - Composição:
 01 - Chassi em acrílico;
@@ -104,11 +108,13 @@ Explicação Técnica do funcionamento:
 Os Servo motores irão fazer girar as rodas(a roda direita e esquerda) dentro do loop fazendo o carro andar em linha reta pois as duas rodas vão estar na mesma velocidade constante. Quando um sensor detecta a linha, o arduino manda um comando para o motor do lado que o sensor detectou a linha fazendo o mesmo parar, assim somente o do outro lado vai girar fazendo ele desviar da linha e continua dessa forma. Conforme a imagem mostra.
 
 
-OBS: Durante a montagem do carro, observando que as rodas não estavam com velocidade constante ou seja, uma delas estava girando mais rápido do que a outra, mesmo mandando o valor igual em módulo. A lógica abordada é bem simples, quando o sensor da direita mandar mandar o sinal identificando uma linha, irá parar a roda da direita e aumentar a velocidade da roda da esquerda, e visse versa, porém utilizamos uma variável de ajuste para tentar igualar a velocidade da roda, por isso na implementação não colocamos os mesmo nas rodas.
+
 
 
 ---------------------------------------
 Logia de Funcionamento
+
+https://github.com/EricoDRocha/SeguidorDeLinha/blob/master/funcionamento.png?raw=true
 
 Como o nosso sensor ele não consegue calcular um valor analogicamente (é apenas digital, zero ou 1) precisamos de uma fórmula para virtualizar.
 if (dir+meio+esq>0)
@@ -279,6 +285,8 @@ Codigo de impementação
 
 Foi encontrado algumas dificuldades no trabalho, o fato do sensor não está muito perto da linha, causando um sinal não muito preciso. Um aumento na quantidade de sensores poderia dar mais precisão, como as rodas são soldadas manualmente, causou o problema de uma roda não girar com mesma velocidade que a outra.
 
+Durante a montagem do carro, observando que as rodas não estavam com velocidade constante ou seja, uma delas estava girando mais rápido do que a outra, mesmo mandando o valor igual em módulo. A lógica abordada é bem simples, quando o sensor da direita mandar mandar o sinal identificando uma linha, irá parar a roda da direita e aumentar a velocidade da roda da esquerda, e visse versa, porém utilizamos uma variável de ajuste para tentar igualar a velocidade da roda, por isso na implementação não colocamos os mesmo nas rodas.
+
 Tivemos um problema na montagem que o VCC estava causando interferência no sensor digital, que as vezes nos fazia achar que a logica estava errada, pois não estavamos entendendo o comportamento do carro.
 
 Como utilizamos o servor motor e eles so vão de 0 (rodando para um lado ao máximo de velocidade) 90 (parado) até 180(rodando para outro lado ao máximo de velocidade) e como utilizamos variaveis para controlar o valor de saida final, que chamamos de "Output" que estaria entre 0 e 180, se esses valores ou ficassem menor que zero ou maior que 180 ele pagava um valor completamente aleatório.
@@ -289,8 +297,6 @@ https://www.filipeflop.com/blog/projeto-robo-seguidor-de-linha-arduino/
 https://www.autocorerobotica.com.br
 https://www.robocore.net
  
-![Alt Text](https://github.com/EricoDRocha/SeguidorDeLinha/raw/master/path/to/arduino.png)
 
 
 
-(https://github.com/EricoDRocha/SeguidorDeLinha/blob/master/arduino.png)

@@ -84,9 +84,12 @@ https://github.com/EricoDRocha/SeguidorDeLinha/blob/master/arduino.png?raw=true
 - Velocidade Clock: 16Mhz
 
 
-Servo TowerPro MG995 Metálico
+Servo TowerPro MG995 Metálico:
+
 O Servo Motor TowerPro MG995 é um servo motor de alto torque de 13kg/cm a 4.8V e 15kg/cm a 6V,  sua rotação pode chegar a  180 graus, por essas características, ele é muito utilizado em projetos de robótica.
 Esse modelo pode ser utilizado com as principais plataformas microcontroladas do mercado, seja ela, pic, arduino, arm entre outros. As conexões do servo motor MG995 segue o padrão dos principais fabricantes do mercado, são elas: Hitec, GWR, Futaba, Cirrus entre outros
+
+https://github.com/EricoDRocha/SeguidorDeLinha/blob/master/servo%20motor.png?raw=true
 
 - Especificações:
 - Modelo: TowerPro MG995;

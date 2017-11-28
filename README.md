@@ -154,7 +154,122 @@ Quanto mais aumentamos o valor principalmente do Kd e Ki o tempo de resposta do 
 Codigo de impementação
 
 ---------------------------------------
----------------------------------------
+int   dir;
+float meio; 
+float esq;   
+int Ajust1;  
+int Ajust2; 
+
+ // variaveis erro
+ int DErro;
+ int erro_ant;
+ int erro;
+
+ //variaveis tempo
+ double tempo;
+ double tempo_ant;
+ double Dtempo;
+
+//Variaveis de controle
+ int leitura;
+ int setpoint;
+double i;
+//Saida total
+ double output;
+
+
+ //constantes 
+  int kp;
+  int p;
+  int kd;
+  int ki;
+
+
+Servo mot_esquerdo,mot_direito;
+
+
+double calc_i(int erro, double tempo, double i){
+  i += i + (DErro* tempo)*ki;
+  return i;
+  }
+
+
+void setup() {
+
+ dir        = 0; 
+ meio       = 0; 
+ esq        = 0; 
+ Ajust1     = 10; 
+ Ajust2     = 10;
+ DErro      = 0;
+ erro_ant   = 0;
+ erro       = 0;
+ tempo      = 0.0;
+ tempo_ant  = 0.0;
+ Dtempo     = 0.0;
+ leitura    = 0;
+ setpoint   = 100;
+ output     = 0.00;
+ i          = 0.0;
+ mot_esquerdo.attach(8); 
+ mot_direito.attach(9);
+
+ 
+ kp         = 0.5;
+ p          = 0;
+ kd         = 0.01;
+ ki         = 0.1;
+ 
+}
+
+void loop() {
+  //pegando o tempo
+  tempo_ant = tempo;
+
+  //  tempo = millis();
+
+   //variaveis de leitura
+  int dir   =  digitalRead(3);
+  int meio  = digitalRead(2); 
+  int esq   = digitalRead(1); 
+
+
+// atrelando DErroanterior
+   erro_ant = erro;
+
+// calculanto leitura
+  if (dir+meio+esq>0){
+    leitura = (150*dir + 100*meio +50*esq)/(dir+meio+esq);
+  }
+
+  // associando novo erro
+    erro  = setpoint - leitura;
+    DErro  = erro - erro_ant;
+  
+  //calculando P
+    p = erro * kp;
+  
+    tempo = millis();
+
+  //Calculo do Dtempo
+      Dtempo = tempo - tempo_ant;
+
+   //chamando metodo calcular i
+      i = calc_i(erro, Dtempo,i);
+
+    //Calculo do Kd
+    kd = erro/Dtempo;
+
+    //calculando a saida
+      output = p + i + kd;
+
+// rodando as rodas
+mot_esquerdo.write(90 + (output+ Ajust1)); 
+mot_direito.write(90 - (output+Ajust2));
+
+
+}
+
 ---------------------------------------
 
 Codigo de impementação

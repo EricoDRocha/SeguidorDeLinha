@@ -2,28 +2,122 @@ Codigo de impementação
 
 #include <Servo.h>
 
-//Define os pinos para o trigger e echo
 
-#define pino_trigger1 1 #define pino_trigger2 #define pino_trigger3 3
+#define pino_trigger1 1 
+#define pino_trigger2 2
+#define pino_trigger3 3
+int   dir;
+float meio; 
+float esq;   
+int Ajust1;  
+int Ajust2; 
 
-//Inicializa as variaveis
+ // variaveis erro
+ int DErro;
+ int erro_ant;
+ int erro;
 
-int led = 13; int para_roda = 90; int dir = 0; float meio = 1; float esq = 0; int Vel = 20;
+ //variaveis tempo
+ double tempo;
+ double tempo_ant;
+ double Dtempo;
+
+//Variaveis de controle
+ int leitura;
+ int setpoint;
+double i;
+//Saida total
+ double output;
+
+
+ //constantes 
+  int kp;
+  int p;
+  int kd;
+  int ki;
+
 
 Servo mot_esquerdo,mot_direito;
 
-//Configura os pinos void setup() { mot_esquerdo.attach(8); mot_direito.attach(9); //mot_esquerdo.writeMicroseconds (1500); //mot_direito.writeMicroseconds (1500);
 
+double calc_i(int erro, double tempo, double i){
+  i += i + (DErro* tempo)*ki;
+  return i;
+  }
+
+
+void setup() {
+
+ dir        = 0; 
+ meio       = 0; 
+ esq        = 0; 
+ Ajust1     = 10; 
+ Ajust2     = 10;
+ DErro      = 0;
+ erro_ant   = 0;
+ erro       = 0;
+ tempo      = 0.0;
+ tempo_ant  = 0.0;
+ Dtempo     = 0.0;
+ leitura    = 0;
+ setpoint   = 100;
+ output     = 0.00;
+ i          = 0.0;
+ mot_esquerdo.attach(8); 
+ mot_direito.attach(9);
+
+ 
+ kp         = 0.5;
+ p          = 0;
+ kd         = 0.01;
+ ki         = 0.1;
+ 
 }
 
-void loop() { int dir = digitalRead(3); int meio = digitalRead(2); int esq = digitalRead(1); int para_Roda = 0; int Vel = 30; int Ajust1= 10; int Ajust2 = -25;
+void loop() {
+  //pegando o tempo
+  tempo_ant = tempo;
 
-//CondiÃ§oes e regras if( dir == 1){ mot_direito.write(90); delay(10); mot_esquerdo.write(90+ Vel+ Ajust1);
+  //  tempo = millis();
 
-}
+   //variaveis de leitura
+  int dir   =  digitalRead(3);
+  int meio  = digitalRead(2); 
+  int esq   = digitalRead(1); 
 
-else if(esq == 1){ mot_esquerdo.write(90); delay(10); mot_direito.write(90 - Vel - Ajust2); }
 
-mot_esquerdo.write(90 + Vel+ Ajust1); mot_direito.write(90 - Vel- Ajust2);
+// atrelando DErroanterior
+   erro_ant = erro;
+
+// calculanto leitura
+  if (dir+meio+esq>0){
+    leitura = (150*dir + 100*meio +50*esq)/(dir+meio+esq);
+  }
+
+  // associando novo erro
+    erro  = setpoint - leitura;
+    DErro  = erro - erro_ant;
+  
+  //calculando P
+    p = erro * kp;
+  
+    tempo = millis();
+
+  //Calculo do Dtempo
+      Dtempo = tempo - tempo_ant;
+
+   //chamando metodo calcular i
+      i = calc_i(erro, Dtempo,i);
+
+    //Calculo do Kd
+    kd = erro/Dtempo;
+
+    //calculando a saida
+      output = p + i + kd;
+
+// rodando as rodas
+mot_esquerdo.write(90 + (output+ Ajust1)); 
+mot_direito.write(90 - (output+Ajust2));
+
 
 }

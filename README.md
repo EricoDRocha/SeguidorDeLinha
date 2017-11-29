@@ -69,7 +69,7 @@ Arduino é uma plataforma de computação open-source baseado em uma simples pla
 Este é o Arduino Uno R3. É uma placa com microcontrolador Atmega328 (datasheet). Possui 14 entradas/saídas digitais (das quais 6 podem ser usadas como saídas PWM), 6 entradas analógicas, um cristal oscilador de 16MHz, conexão USB, uma entrada para fonte, soquetes para ICSP, e um botão de reset. A placa contém todo o necessário para usar o microcontrolador. Simplesmente conecte-a a um computador com o cabo USB - AB (não acompanha - deve ser comprado separadamente) ou ligue a placa com uma fonte AC-DC(ou bateria). O Uno seleciona automáticamente a fonte de alimentação (USB ou fonte externa). Esta placa já vem pronta e testada com o microcontrolador ATMega328 pré-carregado com "bootloader"
 A placa Uno se diferencia das outras por não utilizar o chip da FTDI USB-to-Serial. Ao invés deste chip, um Atmega8U2 já programado faz a função de converter os dados da USB para Serial.
 
-https://github.com/EricoDRocha/SeguidorDeLinha/blob/master/arduino.png?raw=true
+![alt text](https://github.com/EricoDRocha/SeguidorDeLinha/blob/master/arduino.png?raw=true)
 
 - Especificações:
 - Microcontrolador: ATMEGA328P-PU
@@ -89,7 +89,7 @@ Servo TowerPro MG995 Metálico:
 O Servo Motor TowerPro MG995 é um servo motor de alto torque de 13kg/cm a 4.8V e 15kg/cm a 6V,  sua rotação pode chegar a  180 graus, por essas características, ele é muito utilizado em projetos de robótica.
 Esse modelo pode ser utilizado com as principais plataformas microcontroladas do mercado, seja ela, pic, arduino, arm entre outros. As conexões do servo motor MG995 segue o padrão dos principais fabricantes do mercado, são elas: Hitec, GWR, Futaba, Cirrus entre outros
 
-https://github.com/EricoDRocha/SeguidorDeLinha/blob/master/servo%20motor.png?raw=true
+![alt text](https://github.com/EricoDRocha/SeguidorDeLinha/blob/master/servo%20motor.png?raw=true)
 
 - Especificações:
 - Modelo: TowerPro MG995;
@@ -117,7 +117,7 @@ Os Servo motores irão fazer girar as rodas(a roda direita e esquerda) dentro do
 ---------------------------------------
 Logia de Funcionamento
 
-https://github.com/EricoDRocha/SeguidorDeLinha/blob/master/funcionamento.png?raw=true
+![alt text](https://github.com/EricoDRocha/SeguidorDeLinha/blob/master/funcionamento.png?raw=true)
 
 Como o nosso sensor ele não consegue calcular um valor analogicamente (é apenas digital, zero ou 1) precisamos de uma fórmula para virtualizar.
 if (dir+meio+esq>0)

@@ -34,7 +34,7 @@ Módulo Seguidor de Linha Infravermelho 4 Canais:
 O Módulo Seguidor de Linha Infravermelho 4 Canais é baseado em quatro sensores seguidores de linha, o seu diferencial está no fato dele otimizar o projeto, uma vez que o caminho pode ser ao mesmo tempo monitorado em quatro trechos distintos, facilitando dessa forma a estratégia adotada. Cada sensor é independente e possui um trimpot de ajuste de luminosidade de detecção.
 O Módulo Seguidor de Linha Infravermelho 4 Canais é compatível com Arduino, Pic, Arm, Raspberry Pi entre outros.
 
-https://github.com/EricoDRocha/SeguidorDeLinha/blob/master/segidor%20de%20linha.png?raw=true
+![alt text](https://github.com/EricoDRocha/SeguidorDeLinha/blob/master/segidor%20de%20linha.png?raw=true)
 
 - Especificações:
 - Tensão de alimentação: 3.3V - 5V;
@@ -50,7 +50,7 @@ https://github.com/EricoDRocha/SeguidorDeLinha/blob/master/segidor%20de%20linha.
 Kit Chassi 2WD
 O Kit Chassi 2WD foi desenvolvido com a finalidade de prover ao maker interessado em robótica educacional, uma ferramenta de montagem de um carrinho para aplicações em robótica. O Kit Chassi 2WD é composto pela estrutura fabricada em acrílico, motores com caixa de redução(1:48), rodas com pneu, roda boba, suporte para pilhas e peças de montagem do chassi. O Kit Chassi 2WDpode ser utilizado na construção de um robô seguidor de linha, robô de combate, robô que desvia de obstáculos. Para o controle do Kit Chassi 2WD, podem ser utilizadas diversas placas microcontroladas, Arduino, Raspberry Pi, Beaglebone Black, Orange Pi entre outras.
 
-https://github.com/EricoDRocha/SeguidorDeLinha/blob/master/chassi.png?raw=true
+![alt text](https://github.com/EricoDRocha/SeguidorDeLinha/blob/master/chassi.png?raw=true)
 
 - Composição:
 01 - Chassi em acrílico;

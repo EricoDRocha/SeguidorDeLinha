@@ -120,8 +120,11 @@ Logia de Funcionamento
 ![alt text](https://github.com/EricoDRocha/SeguidorDeLinha/blob/master/funcionamento.png?raw=true)
 
 Como o nosso sensor ele não consegue calcular um valor analogicamente (é apenas digital, zero ou 1) precisamos de uma fórmula para virtualizar.
+------------------------	
+
 if (dir+meio+esq>0)
  leitura = (150*dir + 100*meio +50*esq)/(dir+meio+esq);
+--------------------- 
   “dir” “meio” “esq” são as variáveis que recebem o que é lido  do sensor digital
 Dessa forma conseguimos saber o quão perto da esquerda ou da direita ele se encontra.
 

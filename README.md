@@ -165,8 +165,9 @@ Utilizamos técnica tentativa e erro, os valores de melhor resultado forma;
 
 Quanto mais aumentamos o valor principalmente do Kd e Ki o tempo de resposta do carro ou era rápido  demais para efetuar a ação ou ele se perdia e não adiantava o valor lido pelo sensor.
 
------------
 Malha de controle:
+-----------
+
 ![alt text](https://raw.githubusercontent.com/EricoDRocha/SeguidorDeLinha/de8808659b8aecc77540529304ac344ad37c8e91/Capturar.PNG)
 
 Funcionamento:

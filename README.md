@@ -297,7 +297,7 @@ Foi percebido que o nosso sensor está invertido, por isso tivemos que inverter 
 
 Tivemos um problema na montagem que o VCC estava causando interferência no sensor digital, que as vezes nos fazia achar que a logica estava errada, pois não estavamos entendendo o comportamento do carro.
 
-Como utilizamos o servor motor e eles so vão de 0 (rodando para um lado ao máximo de velocidade) 90 (parado) até 180(rodando para outro lado ao máximo de velocidade) e como utilizamos variaveis para controlar o valor de saida final, que chamamos de "Output" que estaria entre 0 e 180, se esses valores ou ficassem menor que zero ou maior que 180 ele pagava um valor completamente aleatório fazendo um overflow no motor, por isso "calibramos" os valores imiciais.
+Como utilizamos o servor motor e eles so vão de 0 (rodando para um lado ao máximo de velocidade) 90 (parado) até 180(rodando para outro lado ao máximo de velocidade) e como utilizamos variaveis para controlar o valor de saida final, que chamamos de "Output" que estaria entre 0 e 180, se esses valores ou ficassem menor que zero ou maior que 180 ele pagava um valor completamente aleatório fazendo um overflow no motor, por isso "calibramos" os valores imiciais(kp,kd,ki).
 
 
 bibliografia :

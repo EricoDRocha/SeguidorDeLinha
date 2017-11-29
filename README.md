@@ -153,13 +153,25 @@ Chamado dentro do codigo após ter o valor do DT e do erro.
 
 Obs: Criamos um metodo para calcular o I afim de deixar o código mais legível, passando o valor I(pois ele é um acumulativo), o erro encontrado e a variação do tempo.
 
-Utilizamos técnica tentativa e erro, os valores de melhor resultado foram;
+Utilizamos técnica tentativa e erro, os valores de melhor resultado forma;
 
 - Kp = 0.5
 - Kd = 0.1
 - Ki = 0.1 
 
+- Kp é a constante usada para fazer variar a magnitude da mudança necessária para atingir o ponto de ajuste.
+- Ki é a constante utilizada para variar a velocidade com que a mudança deve ser apresentado na quantidade física para atingir o ponto de ajuste.
+- Kd é a constante utilizada para variar a estabilidade do sistema.
+
 Quanto mais aumentamos o valor principalmente do Kd e Ki o tempo de resposta do carro ou era rápido  demais para efetuar a ação ou ele se perdia e não adiantava o valor lido pelo sensor.
+
+-----------
+Malha de controle:
+![alt text](https://raw.githubusercontent.com/EricoDRocha/SeguidorDeLinha/de8808659b8aecc77540529304ac344ad37c8e91/Capturar.PNG)
+
+Funcionamento:
+O sistema calcula o “erro” da quantidade física em relação ao set point, medindo o valor atual dessa quantidade física usando um sensor. Para voltar ao set point, este “erro” deve ser minimizado, idealmente igual a zero. Além disso, esse processo deve ocorrer o mais rapidamente possível (também idealmente esse tempo deveria ser zero).
+
 
 
 

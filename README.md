@@ -142,7 +142,7 @@ Depois é calculado o variação do 	Dtempo = tempo - tempo_ant;
 Assim iremos utilizar o Dtempo no cálculo do Kd
 
 Após ter a informação do erro e da variação do tempo, assim podemos calcular o KD;
-kd = erro/Dtempo; -- Kd representa a variação do erro ao longo do tempo
+- kd = erro/Dtempo; -> Kd representa a variação do erro ao longo do tempo
 
 Função  para Calcular o valor de “i” com a constante  “Ki” afim de calibrar o resultado
 - double calc_i(int erro, double tempo, double i){
@@ -164,7 +164,7 @@ Quanto mais aumentamos o valor principalmente do Kd e Ki o tempo de resposta do 
 
 
 Codigo de impementação
-
+---------------------------------------
 ---------------------------------------
 int   dir;
 float meio; 

@@ -168,6 +168,9 @@ Quanto mais aumentamos o valor principalmente do Kd e Ki o tempo de resposta do 
 Malha de controle:
 -----------
 
+
+![alt text](https://github.com/EricoDRocha/SeguidorDeLinha/blob/master/PID2.png?raw=true)
+
 ![alt text](https://raw.githubusercontent.com/EricoDRocha/SeguidorDeLinha/de8808659b8aecc77540529304ac344ad37c8e91/Capturar.PNG)
 
 Funcionamento:
